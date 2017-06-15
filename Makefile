@@ -8,7 +8,7 @@ ifeq ($(UNAME), darwin)
   PLATFORM_WARNINGS:=-Weverything -Wno-c++98-compat-pedantic -Wno-padded \
 	-Wno-missing-prototypes
   PLATFORM_COPTS:=-std=c++11 -stdlib=libc++ -DTARGET_RT_MAC_CFM=0
-  HEADERS:=Headers
+  HEADERS:=include
   CC=clang++
   LDFLAGS=-Wl,-fatal_warnings -Wl,-std=c++11 -Wl,-stdlib=libc++
   ifeq ($(BITS), 64)
@@ -37,7 +37,8 @@ LIBS=-ldl
 BUILD_DIR ?= $(shell mkdir build-$(BITS) 2> /dev/null ; echo build-$(BITS))
 SRC_DIR:=${PWD}/src
 OPT?=-O2
-GLOBAL_WARNINGS=-Wall -Werror -Wformat-security -Wno-char-subscripts \
+//GLOBAL_WARNINGS=-Wall -Werror -Wformat-security -Wno-char-subscripts \
+GLOBAL_WARNINGS=-Wall -Wformat-security -Wno-char-subscripts \
 	-Wno-sign-compare -Wno-strict-overflow -Wwrite-strings -Wnon-virtual-dtor \
 	-Woverloaded-virtual
 GLOBAL_COPTS=-fdiagnostics-show-option -fno-exceptions \
